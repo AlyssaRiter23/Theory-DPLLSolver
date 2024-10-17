@@ -189,8 +189,9 @@ def test_dpll_polynomial(trials, num_variables_range):
     
     with open("resultsfile.txt", "a") as f:
         for num_variables in num_variables_range:
-            num_clauses = 3 * num_variables  # using 3 * variables as a standard case for the number of clauses
+            #num_clauses = 3 * num_variables  # using 3 * variables as a standard case for the number of clauses
             for trial in range(trials):
+                num_clauses = random.randint(num_variables, 3 * num_variables)
                 # generate a random 2-SAT CNF formula
                 cnf = generate_random_2sat(num_variables, num_clauses)
 
@@ -239,7 +240,7 @@ def plot_execution_times(variables_list_sat, execution_times_sat, variables_list
 
 # arguments for testing
 NUM_TRIALS = 10  # number of trials per test case
-VARIABLE_RANGE = range(3, 100, 5)  # range of variables to test (2 to 50 variables)
+VARIABLE_RANGE = range(3, 150, 5)  # range of variables to test (2 to 50 variables)
 # run tests and plot the results
 variables_list_sat, execution_times_sat, variables_list_unsat, execution_times_unsat = test_dpll_polynomial(NUM_TRIALS, VARIABLE_RANGE)
 plot_execution_times(variables_list_sat, execution_times_sat, variables_list_unsat, execution_times_unsat)
