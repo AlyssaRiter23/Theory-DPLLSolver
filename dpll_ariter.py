@@ -189,7 +189,6 @@ def test_dpll_polynomial(trials, num_variables_range):
     
     with open("resultsfile.txt", "a") as f:
         for num_variables in num_variables_range:
-            #num_clauses = 3 * num_variables  # using 3 * variables as a standard case for the number of clauses
             for trial in range(trials):
                 num_clauses = random.randint(num_variables, 3 * num_variables)
                 # generate a random 2-SAT CNF formula
